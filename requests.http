@@ -1,0 +1,19 @@
+POST http://localhost:5158/extends-dictionary
+Content-Type: application/json
+
+{
+  "name": "39229194-1660-49e1-8b6d-8e4ec13bc019",
+  "isEnabled": "39229194-1660-49e1-8b6d-8e4ec13bc019",
+  "a-random-key": "39229194-1660-49e1-8b6d-8e4ec13bc019"
+}
+
+###
+
+POST http://localhost:5158/type-with-extension-data
+Content-Type: application/json
+
+{
+  "name": "some-name",
+  "isEnabled": true,
+  "a-random-key": "a-random-value"
+}
