@@ -1,0 +1,92 @@
+@base=http://localhost:5294
+ 
+GET {{base}}/non-nullable-array?ints=1&ints=2&ints=&ints=4
+
+# Microsoft.AspNetCore.Http.BadHttpRequestException: Failed to bind parameter "int[] ints" from "".
+#    at lambda_method1(Closure, Object, HttpContext)
+#    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+# HEADERS
+# =======
+# Connection: close
+# Host: localhost:5294
+# User-Agent: vscode-restclient
+# Accept-Encoding: gzip, deflate
+
+# RDG: [1,2,0,4]
+
+ 
+###
+
+GET {{base}}/nullable-array?ints=1&ints=2&ints=&ints=4
+
+# RDG and RDF: [1,2,null,4]
+
+###
+
+GET {{base}}/non-nullable?ints=
+
+# Microsoft.AspNetCore.Http.BadHttpRequestException: Failed to bind parameter "int ints" from "".
+#    at lambda_method3(Closure, Object, HttpContext)
+#    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+# HEADERS
+# =======
+# Connection: close
+# Host: localhost:5294
+# User-Agent: vscode-restclient
+# Accept-Encoding: gzip, deflate
+
+#  RDG: 0
+
+###
+
+GET {{base}}/non-nullable?ints=1
+
+# RDG and RDF: 1
+
+
+###
+
+GET {{base}}/non-nullable
+
+# RDG and RDF:
+# Microsoft.AspNetCore.Http.BadHttpRequestException: Required parameter "int ints" was not provided from query string.
+#    at lambda_method3(Closure, Object, HttpContext)
+#    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+# HEADERS
+# =======
+# Connection: close
+# Host: localhost:5294
+# User-Agent: vscode-restclient
+# Accept-Encoding: gzip, deflate
+
+###
+
+GET {{base}}/nullable?ints=
+
+# Microsoft.AspNetCore.Http.BadHttpRequestException: Failed to bind parameter "Nullable<int> ints" from "".
+#    at lambda_method4(Closure, Object, HttpContext)
+#    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+# HEADERS
+# =======
+# Connection: close
+# Host: localhost:5294
+# User-Agent: vscode-restclient
+# Accept-Encoding: gzip, deflate
+
+# RDF: null
+
+###
+
+GET {{base}}/nullable?ints=1
+
+# RDF and RDG: 1
+
+###
+
+GET {{base}}/nullable
+
+# RDF and RDG: null
