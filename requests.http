@@ -77,7 +77,7 @@ GET {{base}}/nullable?ints=
 # User-Agent: vscode-restclient
 # Accept-Encoding: gzip, deflate
 
-# RDF: null
+# RDG: null
 
 ###
 
