@@ -1,8 +1,8 @@
 ||| RDF | RDG |
 |---|---|---|---|
 | `(int number) => { }` | `/?number=1` | `1` | `1` |
-| `(int number) => { }` | `/?number=` | `1` | `1` |
-| `(int number) => { }` | `/` | Throws exception | `1` |
+| `(int number) => { }` | `/?number=` | `1` | `0` |
+| `(int number) => { }` | `/` | Throws exception | Throws exception |
 | `(int? number) => { }` | `/?number=1` | `1` | `1` |
 | `(int? number) => { }` | `/?number=` | Throws exception | `1` |
 | `(int? number) => { }` | `/` | `null` | `1` |
