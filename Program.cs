@@ -33,9 +33,9 @@ public class WeatherForecast : IBindableFromHttpContext<WeatherForecast>, IEndpo
     public static async ValueTask<WeatherForecast?> BindAsync(HttpContext context, ParameterInfo parameter)
     {
         // If this request has an XML content type, we'll deserialize the body into a WeatherForecast
-        if (context.Request.ContentType == "application/xml")
+        if (context.Request.ContentType == "application/xml" || context.Request.ContentType == "text/xml")
         {
-            var xmlDoc = await XDocument.LoadAsync(context.Request.Body, LoadOptions.None, CancellationToken.None);
+            var xmlDoc = await XDocument.LoadAsync(context.Request.Body, LoadOptions.None, context.RequestAborted);
             var serializer = new XmlSerializer(typeof(WeatherForecast));
             return (WeatherForecast?)serializer.Deserialize(xmlDoc.CreateReader());
         }
