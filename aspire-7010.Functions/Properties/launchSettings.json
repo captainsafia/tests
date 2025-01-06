@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "aspire_7010_Functions": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7264",
+      "launchBrowser": false
+    }
+  }
+}
